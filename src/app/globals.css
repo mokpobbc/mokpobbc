@@ -1,0 +1,1418 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+:root {
+  --navy: #102a43;
+  --navy-dark: #071b2f;
+  --blue: #2f6fed;
+  --text: #172b3a;
+  --muted: #718096;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--text);
+  font-family: "Pretendard", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* =========================
+   메인 히어로
+========================= */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(47, 111, 237, 0.25),
+      transparent 35%
+    ),
+    linear-gradient(
+      135deg,
+      var(--navy-dark),
+      var(--navy)
+    );
+
+  color: white;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  right: -180px;
+  bottom: -200px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.hero-content {
+  width: min(1100px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 100px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  margin: 0 0 24px;
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.hero h1 {
+  margin: 0;
+
+  font-size: clamp(48px, 7vw, 88px);
+  line-height: 1.12;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+}
+
+.hero h1 span {
+  color: #8db5ff;
+}
+
+.description {
+  margin: 36px 0 0;
+
+  font-size: 18px;
+  line-height: 1.8;
+
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.buttons {
+  display: flex;
+  gap: 14px;
+  margin-top: 44px;
+}
+
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 52px;
+  padding: 0 25px;
+
+  border-radius: 999px;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.primary-button {
+  background: white;
+  color: var(--navy);
+}
+
+.primary-button:hover {
+  transform: translateY(-2px);
+}
+
+.secondary-button {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+}
+
+.secondary-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* =========================
+   모바일
+========================= */
+
+@media (max-width: 700px) {
+  .hero-content {
+    width: min(100% - 32px, 1100px);
+    padding: 80px 0;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 100%;
+  }
+}
+/* =========================
+   HEADER
+========================= */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+
+  background: rgba(7, 27, 47, 0.82);
+  backdrop-filter: blur(16px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header-inner {
+  width: min(1200px, calc(100% - 48px));
+  height: 78px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  color: white;
+}
+
+.logo-symbol {
+  font-size: 23px;
+  color: #8db5ff;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.logo-text strong {
+  font-size: 17px;
+  letter-spacing: -0.04em;
+}
+
+.logo-text small {
+  margin-top: 5px;
+
+  font-size: 8px;
+  letter-spacing: 0.14em;
+
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+
+  margin-left: auto;
+  margin-right: 35px;
+}
+
+.navigation a {
+  position: relative;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  color: rgba(255, 255, 255, 0.72);
+
+  transition: color 0.2s ease;
+}
+
+.navigation a:hover {
+  color: white;
+}
+
+.login-button {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  padding: 9px 17px;
+  border-radius: 999px;
+
+  background: transparent;
+  color: white;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.login-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-menu {
+  display: none;
+
+  width: 40px;
+  height: 40px;
+
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.mobile-menu span {
+  display: block;
+
+  width: 22px;
+  height: 2px;
+
+  margin: 5px auto;
+
+  background: white;
+}
+
+/* =========================
+   MOBILE HEADER
+========================= */
+
+@media (max-width: 800px) {
+  .header-inner {
+    width: calc(100% - 32px);
+    height: 68px;
+  }
+
+  .navigation {
+    display: none;
+
+    position: absolute;
+    top: 68px;
+    left: 0;
+
+    width: 100%;
+
+    margin: 0;
+    padding: 20px;
+
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    background: rgba(7, 27, 47, 0.97);
+  }
+
+  .navigation.open {
+    display: flex;
+  }
+
+  .navigation a {
+    padding: 15px 5px;
+  }
+
+  .login-button {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+}
+/* =========================
+   WORSHIP SECTION
+========================= */
+
+.worship-section {
+  padding: 140px 0;
+  background: #ffffff;
+  color: var(--text);
+}
+
+.section-container {
+  width: min(1100px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 50px;
+  margin-bottom: 60px;
+}
+
+.section-eyebrow {
+  margin: 0 0 18px;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+
+  color: #2f6fed;
+}
+
+.section-heading h2 {
+  margin: 0;
+
+  font-size: clamp(36px, 5vw, 58px);
+  line-height: 1.2;
+  letter-spacing: -0.05em;
+}
+
+.section-intro {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* 예배 카드 */
+
+.worship-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+}
+
+.worship-card {
+  min-height: 360px;
+
+  padding: 30px;
+
+  border: 1px solid #e7edf3;
+  border-radius: 24px;
+
+  background: #f8fafc;
+
+  display: flex;
+  flex-direction: column;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.worship-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 20px 50px rgba(16, 42, 67, 0.1);
+}
+
+.worship-card.featured {
+  background: var(--navy);
+  color: white;
+
+  border-color: var(--navy);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  color: #8293a7;
+}
+
+.featured .card-top {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.card-content {
+  margin-top: auto;
+}
+
+.worship-label {
+  margin: 0 0 12px;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+
+  color: #6f86a0;
+}
+
+.featured .worship-label {
+  color: #8db5ff;
+}
+
+.card-content h3 {
+  margin: 0 0 15px;
+
+  font-size: 30px;
+  letter-spacing: -0.04em;
+}
+
+.card-content strong {
+  display: block;
+
+  margin-bottom: 20px;
+
+  font-size: 23px;
+  letter-spacing: -0.03em;
+}
+
+.card-content p:last-child {
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 1.8;
+
+  color: #718096;
+}
+
+.featured .card-content p:last-child {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* =========================
+   WORSHIP MOBILE
+========================= */
+
+@media (max-width: 850px) {
+  .worship-section {
+    padding: 100px 0;
+  }
+
+  .section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 25px;
+  }
+
+  .worship-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .worship-card {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 700px) {
+  .section-container {
+    width: calc(100% - 32px);
+  }
+
+  .section-heading h2 {
+    font-size: 38px;
+  }
+
+  .section-intro {
+    font-size: 15px;
+  }
+}
+/* =========================
+   NEWS SECTION
+========================= */
+
+.news-section {
+  padding: 140px 0;
+  background: #f6f8fb;
+  color: var(--text);
+}
+
+.news-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 40px;
+  margin-bottom: 55px;
+}
+
+.news-header h2 {
+  margin: 0;
+
+  font-size: clamp(36px, 5vw, 58px);
+  line-height: 1.2;
+
+  letter-spacing: -0.05em;
+}
+
+.view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 13px 19px;
+
+  border: 1px solid #dce4ec;
+  border-radius: 999px;
+
+  background: white;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.view-all:hover {
+  background: #edf2f7;
+  transform: translateY(-2px);
+}
+
+.view-all span {
+  font-size: 18px;
+}
+
+/* 뉴스 목록 */
+
+.news-list {
+  border-top: 1px solid #dce4ec;
+}
+
+.news-item {
+  display: grid;
+
+  grid-template-columns: 180px 1fr 40px;
+
+  align-items: center;
+
+  gap: 30px;
+
+  padding: 30px 10px;
+
+  border-bottom: 1px solid #dce4ec;
+
+  transition:
+    background 0.2s ease,
+    padding 0.2s ease;
+}
+
+.news-item:hover {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  background: white;
+}
+
+.news-date {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.news-date span {
+  font-size: 13px;
+  font-weight: 700;
+
+  color: #52667a;
+}
+
+.news-date small {
+  width: fit-content;
+
+  padding: 5px 9px;
+
+  border-radius: 5px;
+
+  background: #e8eef5;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  color: #47617b;
+}
+
+.news-content h3 {
+  margin: 0 0 9px;
+
+  font-size: 19px;
+  letter-spacing: -0.03em;
+}
+
+.news-content p {
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 1.7;
+
+  color: var(--muted);
+}
+
+.news-arrow {
+  font-size: 23px;
+
+  color: #9aaabd;
+
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.news-item:hover .news-arrow {
+  transform: translateX(5px);
+
+  color: var(--navy);
+}
+
+/* 모바일 */
+
+@media (max-width: 700px) {
+  .news-section {
+    padding: 100px 0;
+  }
+
+  .news-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .news-item {
+    grid-template-columns: 1fr 25px;
+
+    gap: 15px;
+
+    padding: 25px 5px;
+  }
+
+  .news-date {
+    grid-column: 1 / -1;
+
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .news-content {
+    grid-column: 1;
+  }
+
+  .news-arrow {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .news-content h3 {
+    font-size: 17px;
+  }
+
+  .news-content p {
+    font-size: 13px;
+  }
+}
+/* =========================
+   SERMON SECTION
+========================= */
+
+.sermons-section {
+  padding: 140px 0;
+  background: #ffffff;
+  color: var(--text);
+}
+
+.sermons-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.sermons-header h2 {
+  margin: 0;
+
+  font-size: clamp(36px, 5vw, 58px);
+  line-height: 1.2;
+
+  letter-spacing: -0.05em;
+}
+
+.sermon-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 24px;
+}
+
+.sermon-card {
+  overflow: hidden;
+
+  border: 1px solid #e4eaf0;
+  border-radius: 22px;
+
+  background: white;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.sermon-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 20px 50px rgba(16, 42, 67, 0.1);
+}
+
+.video-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 16 / 9;
+
+  background: #071b2f;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+}
+
+.sermon-info {
+  padding: 26px 28px 30px;
+}
+
+.sermon-meta {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 12px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  color: #8494a6;
+}
+
+.sermon-info h3 {
+  margin: 0 0 22px;
+
+  font-size: 21px;
+  letter-spacing: -0.03em;
+}
+
+.sermon-link {
+  font-size: 13px;
+  font-weight: 700;
+
+  color: var(--navy);
+}
+
+.sermon-link:hover {
+  text-decoration: underline;
+}
+
+/* 모바일 */
+
+@media (max-width: 750px) {
+  .sermons-section {
+    padding: 100px 0;
+  }
+
+  .sermons-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .sermon-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sermon-info {
+    padding: 22px;
+  }
+}
+/* =========================
+   ALBUM SECTION
+========================= */
+
+.album-section {
+  padding: 140px 0;
+  background: #f6f8fb;
+  color: var(--text);
+}
+
+.album-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.album-header h2 {
+  margin: 0;
+
+  font-size: clamp(36px, 5vw, 58px);
+  line-height: 1.2;
+
+  letter-spacing: -0.05em;
+}
+
+.album-grid {
+  display: grid;
+
+  grid-template-columns: 1.2fr 1fr 1fr;
+
+  gap: 18px;
+}
+
+.album-card {
+  min-width: 0;
+}
+
+.album-image {
+  position: relative;
+
+  overflow: hidden;
+
+  aspect-ratio: 4 / 5;
+
+  border-radius: 20px;
+
+  background: #dce4ec;
+}
+
+.album-1 .album-image {
+  aspect-ratio: 4 / 5;
+}
+
+.album-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition: transform 0.5s ease;
+}
+
+.album-card:hover .album-image img {
+  transform: scale(1.05);
+}
+
+.album-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+  align-items: flex-end;
+
+  padding: 25px;
+
+  background: linear-gradient(
+    to top,
+    rgba(7, 27, 47, 0.75),
+    rgba(7, 27, 47, 0) 55%
+  );
+
+  opacity: 0;
+
+  transition: opacity 0.3s ease;
+}
+
+.album-card:hover .album-overlay {
+  opacity: 1;
+}
+
+.album-overlay span {
+  color: white;
+
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.album-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 18px 4px;
+}
+
+.album-info p {
+  margin: 0 0 5px;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 0.13em;
+
+  color: #71849a;
+}
+
+.album-info h3 {
+  margin: 0;
+
+  font-size: 18px;
+
+  letter-spacing: -0.03em;
+}
+
+.album-info > span {
+  padding-top: 3px;
+
+  white-space: nowrap;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  color: #8a9aac;
+}
+
+/* 모바일 */
+
+@media (max-width: 750px) {
+  .album-section {
+    padding: 100px 0;
+  }
+
+  .album-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .album-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .album-image,
+  .album-1 .album-image {
+    aspect-ratio: 16 / 10;
+  }
+}
+/* =========================
+   LOCATION / ABOUT
+========================= */
+
+.location-section {
+  padding: 140px 0;
+  background: #ffffff;
+  color: var(--text);
+}
+
+.location-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.location-header h2 {
+  margin: 0;
+
+  font-size: clamp(36px, 5vw, 58px);
+  line-height: 1.2;
+
+  letter-spacing: -0.05em;
+}
+
+.location-intro {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.church-info-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 15px;
+
+  margin-bottom: 18px;
+}
+
+.church-info-card {
+  min-height: 250px;
+
+  padding: 27px;
+
+  border: 1px solid #e4eaf0;
+  border-radius: 20px;
+
+  background: #f8fafc;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.info-number {
+  margin-bottom: 35px;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  color: #91a1b2;
+}
+
+.church-info-card > p {
+  margin: 0 0 12px;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 0.1em;
+
+  color: #73869b;
+}
+
+.church-info-card h3 {
+  margin: 0;
+
+  font-size: 21px;
+  line-height: 1.4;
+
+  letter-spacing: -0.04em;
+}
+
+.info-description {
+  margin-top: auto;
+
+  font-size: 12px;
+  line-height: 1.7;
+
+  color: #8292a3;
+}
+
+.email-text {
+  font-size: 16px !important;
+
+  word-break: break-all;
+}
+
+.denomination-link {
+  margin-top: auto;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  color: var(--navy);
+}
+
+.denomination-link:hover {
+  text-decoration: underline;
+}
+
+/* 오시는 길 */
+
+.location-box {
+  display: grid;
+
+  grid-template-columns: 0.8fr 1.2fr;
+
+  min-height: 380px;
+
+  overflow: hidden;
+
+  border-radius: 24px;
+
+  background: var(--navy);
+
+  color: white;
+}
+
+.location-text {
+  padding: 50px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.location-text .section-eyebrow {
+  color: #8db5ff;
+}
+
+.location-text h3 {
+  margin: 0 0 30px;
+
+  font-size: 36px;
+  line-height: 1.25;
+
+  letter-spacing: -0.05em;
+}
+
+.location-text > p:last-child {
+  margin: 0;
+
+  font-size: 14px;
+
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.map-placeholder {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dfe7ee,
+      #c7d3de
+    );
+
+  color: #52667a;
+}
+
+.map-placeholder span {
+  font-size: 42px;
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+
+  opacity: 0.25;
+}
+
+.map-placeholder p {
+  margin-top: 8px;
+
+  font-size: 12px;
+
+  opacity: 0.7;
+}
+
+/* 모바일 */
+
+@media (max-width: 900px) {
+  .church-info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .location-box {
+    grid-template-columns: 1fr;
+  }
+
+  .map-placeholder {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 700px) {
+  .location-section {
+    padding: 100px 0;
+  }
+
+  .location-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .church-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .location-text {
+    padding: 35px;
+  }
+
+  .location-text h3 {
+    font-size: 30px;
+  }
+}
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+  background: var(--navy);
+  color: white;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 24px 25px;
+}
+
+.footer-main {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  padding-bottom: 70px;
+}
+
+.footer-mark {
+  margin: 0 0 18px;
+
+  font-size: 18px;
+  color: #9bb8d8;
+}
+
+.footer-brand h2 {
+  margin: 0;
+
+  font-size: 28px;
+  font-weight: 800;
+
+  letter-spacing: -0.04em;
+}
+
+.footer-english {
+  margin: 7px 0 30px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.footer-description {
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 1.8;
+
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 30px;
+}
+
+.footer-info-item span {
+  display: block;
+
+  margin-bottom: 15px;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 0.13em;
+
+  color: #8faaca;
+}
+
+.footer-info-item p {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.8;
+
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-top: 22px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-bottom p {
+  margin: 0;
+
+  font-size: 10px;
+
+  color: rgba(255, 255, 255, 0.4);
+}
+
+
+/* =========================
+   FOOTER MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+  .footer-container {
+    padding: 60px 20px 22px;
+  }
+
+  .footer-main {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+
+    padding-bottom: 50px;
+  }
+
+  .footer-info {
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+  }
+
+  .footer-bottom {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+}
