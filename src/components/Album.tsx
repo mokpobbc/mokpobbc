@@ -3,19 +3,19 @@ const albums = [
     title: "강민구 담임목사 취임식",
     category: "SPECIAL EVENT",
     date: "2025.08.24",
-    image: "/album/pastor-inauguration.jpg",
+    image: "/album/pastor-inauguration.JPG",
   },
   {
     title: "취임사",
     category: "PASTOR",
     date: "2025.08.24",
-    image: "/album/pastor-inauguration-message.jpg",
+    image: "/album/pastor-inauguration-message.JPG",
   },
   {
     title: "성탄전야제",
     category: "CHRISTMAS",
     date: "2025.12.24",
-    image: "/album/christmas-eve.jpg",
+    image: "/album/christmas-eve.JPG",
   },
 ];
 
