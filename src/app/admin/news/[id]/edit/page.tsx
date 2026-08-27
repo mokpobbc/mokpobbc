@@ -139,6 +139,7 @@ export default function EditNewsPage() {
       >
         <label>
           제목
+
           <input
             type="text"
             value={title}
@@ -155,6 +156,7 @@ export default function EditNewsPage() {
 
         <label>
           내용
+
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
@@ -173,6 +175,7 @@ export default function EditNewsPage() {
         {currentImageUrl && (
           <div>
             <p>현재 사진</p>
+
             <img
               src={currentImageUrl}
               alt="현재 교회소식 이미지"
@@ -187,6 +190,7 @@ export default function EditNewsPage() {
 
         <label>
           새 사진으로 변경
+
           <input
             type="file"
             accept="image/*"
