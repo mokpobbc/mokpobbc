@@ -1,15 +1,51 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabase";
 
 export default function Header() {
+  const router = useRouter();
+
   const [menuOpen, setMenuOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    checkLogin();
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setLoggedIn(!!session);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  async function checkLogin() {
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
+
+    setLoggedIn(!!session);
+  }
+
+  async function handleLogout() {
+    await supabase.auth.signOut();
+    setLoggedIn(false);
+    router.refresh();
+  }
 
   return (
     <header className="site-header">
       <div className="header-inner">
-
-        <a href="#home" className="logo">
+        <a
+          href="#home"
+          className="logo"
+          onClick={() => setMenuOpen(false)}
+        >
           <span className="logo-symbol">✦</span>
 
           <span className="logo-text">
@@ -40,12 +76,47 @@ export default function Header() {
           </a>
         </nav>
 
-        <button
-          className="login-button"
-          onClick={() => alert("로그인 기능은 다음 단계에서 만들어요.")}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+          }}
         >
-          로그인
-        </button>
+          {loggedIn ? (
+            <>
+              <button
+                className="login-button"
+                onClick={() => router.push("/mypage")}
+              >
+                내 계정
+              </button>
+
+              <button
+                className="login-button"
+                onClick={handleLogout}
+              >
+                로그아웃
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                className="login-button"
+                onClick={() => router.push("/login")}
+              >
+                로그인
+              </button>
+
+              <button
+                className="login-button"
+                onClick={() => router.push("/signup")}
+              >
+                회원가입
+              </button>
+            </>
+          )}
+        </div>
 
         <button
           className="mobile-menu"
@@ -56,7 +127,6 @@ export default function Header() {
           <span></span>
           <span></span>
         </button>
-
       </div>
     </header>
   );
